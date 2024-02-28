@@ -16,8 +16,10 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 urlpatterns = [
+    path("", include("art_gen_server.urls")), # FOR DEV: DEFAULT LOCALHOST ROOT URL  WILL GO TO API
+    path("api/v0/", include("art_gen_server.urls")),
     path("admin/", admin.site.urls),
 ]
