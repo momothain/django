@@ -14,6 +14,25 @@ def index(request):
 # def home(request):
 #     return render(request, "home.html")
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import Image
+from .serializers import ImageSerializer
+
+class ImageView(APIView):
+    def get(self, request):
+        images = Image.objects.all()
+        serializer = ImageSerializer(images, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = ImageSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+
+
 class ImageViewSet(viewsets.ModelViewSet):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
