@@ -4,7 +4,7 @@
 ```bash
 python3 -m venv venv
 pip install -r requirements.txt
-cd server
+cd backend
 FILL OUT THE .env
 python manage.py runserver
 ```

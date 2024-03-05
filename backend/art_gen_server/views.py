@@ -1,26 +1,26 @@
-import django.http.request
-from django.shortcuts import render
+import os
 
-# Create your views here.
-from rest_framework import viewsets
+import django
+import django.http
+from django.conf import settings
+from django.http import HttpResponse
 
-import backend.art_gen_server.settings
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 from .models import Image
 from .serializers import ImageSerializer
+
 
 def index(request):
     return django.http.HttpResponse("Hi! This is the index for art_gen_server's api/v0 .")
 
+
 # def home(request):
 #     return render(request, "home.html")
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from .models import Image
-from .serializers import ImageSerializer
-
 class ImageView(APIView):
-    def get(self, request):
+    def get(self, rezquest):
         images = Image.objects.all()
         serializer = ImageSerializer(images, many=True)
         return Response(serializer.data)
@@ -33,17 +33,16 @@ class ImageView(APIView):
         return Response(serializer.errors, status=400)
 
 
-class ImageViewSet(viewsets.ModelViewSet):
-    queryset = Image.objects.all()
-    serializer_class = ImageSerializer
 # Path: urls.py
-def getJeff(request):
+def get_jeff(request):
     return None
 
 
-def getJeffBytes(request):
-    with open(backend.art_gen_server.settings.MEDIA_ROOT + "/jeff.jpg", "rb") as image:
+def get_jeff_bytes(request):
+    file_path = os.path.join(settings.MEDIA_ROOT, "jeff.jpg")
+    with open(file_path, "rb") as image:
         return HttpResponse(image.read(), content_type="image/jpeg")
 
-def getJeffUrl(request):
+
+def get_jeff_url(request):
     return None
