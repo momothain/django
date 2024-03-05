@@ -26,6 +26,17 @@ class ImageView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+        if request.method == 'POST':
+            # Assuming you have a file input in your form with name 'image_file'
+            image_file = request.FILES.get('image')
+            name = request.POST.get('name', 'default_name')
+            
+            new_image = Image(name=name, image_file=image_file)
+            new_image.save()
+            
+            return HttpResponse("Image uploaded successfully!")
+        else:
+            return HttpResponse("Only POST requests are accepted here.")
         serializer = ImageSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
