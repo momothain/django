@@ -1,0 +1,16 @@
+annotated-types==0.6.0
+asgiref==3.7.2
+black==24.1.1
+click==8.1.7
+Django==5.0.2
+djangorestframework==3.14.0
+mypy-extensions==1.0.0
+packaging==23.2
+pathspec==0.12.1
+pillow==10.2.0
+platformdirs==4.2.0
+pydantic==2.6.1
+pydantic_core==2.16.2
+pytz==2024.1
+sqlparse==0.4.4
+typing_extensions==4.9.0
