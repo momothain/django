@@ -20,7 +20,7 @@ def index(request):
 #     return render(request, "home.html")
 
 class ImageView(APIView):
-    def get(self, rezquest):
+    def get(self, request):
         images = Image.objects.all()
         serializer = ImageSerializer(images, many=True)
         return Response(serializer.data)
@@ -42,6 +42,7 @@ def get_jeff_bytes(request):
     file_path = os.path.join(settings.MEDIA_ROOT, "jeff.jpg")
     with open(file_path, "rb") as image:
         return HttpResponse(image.read(), content_type="image/jpeg")
+
 
 
 def get_jeff_url(request):
