@@ -1,14 +1,16 @@
-# art-gen
-
 # Backend
-```zsh
+## Install
+```shell
+cd backend
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-cd backend
+```
+
+## Run
+```shell
 FILL OUT THE .env
 python manage.py runserver
-srcvenv
 ```
 
 

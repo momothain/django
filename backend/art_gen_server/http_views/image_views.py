@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Image
+from backend.art_gen_server.db_models.image import Image
 from .serializers import ImageSerializer
 
 
@@ -37,6 +37,7 @@ class ImageView(APIView):
             return HttpResponse("Image uploaded successfully!")
         else:
             return HttpResponse("Only POST requests are accepted here.")
+        
         serializer = ImageSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
