@@ -14,6 +14,8 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_ROOT = BASE_DIR / "static"
+MEDIA_ROOT = BASE_DIR / "media"
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,13 +39,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # Third-party apps
-    "rest_framework",                # Django REST Framework for API development
+    "rest_framework",  # Django REST Framework for API development
     # "django_extensions",             # Django Extensions for additional management commands
     # "django_filters",                # Django Filters for filtering querysets
     # "corsheaders",                   # Django CORS Headers for handling the server's CORS policy
-
     # Your project apps
     "art_gen_server",
 ]
@@ -129,4 +129,4 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = "django.db.db_models.BigAutoField"
+DEFAULT_AUTO_FIELD = "django.db_models.BigAutoField"
